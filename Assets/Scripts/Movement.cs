@@ -19,7 +19,6 @@ public class Movement : MonoBehaviour
         {
             Vector3 cameraVerticalRotation = new Vector3(- Input.GetAxisRaw("Mouse Y"), 0, 0);
             Vector3 cameraHorizontalRotation = new Vector3(0, Input.GetAxisRaw("Mouse X"), 0);
-            Debug.Log(Input.GetAxisRaw("Mouse Y"));
             transform.localEulerAngles += cameraHorizontalRotation * _rotationSensitivity * Time.deltaTime;
             _fpsCamera.transform.localEulerAngles += cameraVerticalRotation * _rotationSensitivity * Time.deltaTime;
 
