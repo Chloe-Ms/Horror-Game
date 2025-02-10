@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObjectObjectivePairing
 {
-    public CubeInteractable MovableObject;
-    public CubeObjectiveInteractable Objective;
+    public ObjectInteractable MovableObject;
+    public ObjectObjectiveInteractable Objective;
 }
 
 public class TidyingManager : MonoBehaviour
@@ -25,8 +25,8 @@ public class TidyingManager : MonoBehaviour
     void InitializeObjectMap()
     {
         _pairingObjectObjective = new Dictionary<string, ObjectObjectivePairing>();
-        CubeInteractable[] objectsInteractable = FindObjectsOfType<CubeInteractable>();
-        foreach (CubeInteractable interactable in objectsInteractable)
+        ObjectInteractable[] objectsInteractable = FindObjectsOfType<ObjectInteractable>();
+        foreach (ObjectInteractable interactable in objectsInteractable)
         {
             if (!_pairingObjectObjective.ContainsKey(interactable.IDName))
             {
@@ -36,8 +36,8 @@ public class TidyingManager : MonoBehaviour
             _pairingObjectObjective[interactable.IDName].MovableObject = interactable;
         }
 
-        CubeObjectiveInteractable[] objectivesInteractable = FindObjectsOfType<CubeObjectiveInteractable>();
-        foreach (CubeObjectiveInteractable objective in objectivesInteractable)
+        ObjectObjectiveInteractable[] objectivesInteractable = FindObjectsOfType<ObjectObjectiveInteractable>();
+        foreach (ObjectObjectiveInteractable objective in objectivesInteractable)
         {
             if (!_pairingObjectObjective.ContainsKey(objective.IDName))
             {

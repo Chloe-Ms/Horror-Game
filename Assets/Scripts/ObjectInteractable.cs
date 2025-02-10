@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeInteractable : MonoBehaviour, IInteractable
+public class ObjectInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject _playerObjectPosition;
     [SerializeField] private string _idName;

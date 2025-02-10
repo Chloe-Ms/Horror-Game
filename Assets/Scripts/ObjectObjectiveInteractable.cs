@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeObjectiveInteractable : MonoBehaviour, IInteractable
+public class ObjectObjectiveInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _idName;
     
