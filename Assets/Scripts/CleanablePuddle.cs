@@ -64,4 +64,9 @@ public class CleanablePuddle : MonoBehaviour, IInteractable
     {
         StopCleaning();
     }
+
+    private void OnDestroy()
+    {
+        StopCleaning();
+    }
 }
