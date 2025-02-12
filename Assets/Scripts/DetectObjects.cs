@@ -22,7 +22,6 @@ public class DetectObjects : MonoBehaviour
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, _distanceRaycast, _layerMask))
         {
             GameObject hitGameobject = hit.transform.gameObject;
-            Debug.Log($"hitGameobject {hitGameobject.name}");
             IInteractable currentInteractable = hitGameobject.GetComponent<IInteractable>();
 
             OnChangeTarget?.Invoke(_lastInteractable,currentInteractable);

@@ -46,7 +46,7 @@ public class TidyingManager : MonoBehaviour
                 Debug.LogWarning($"No object set for {objective.IDName}");
             }
             _pairingObjectObjective[objective.IDName].Objective = objective;
-            //objective.gameObject.SetActive(false);
+            objective.gameObject.SetActive(false);
         }
     }
 
