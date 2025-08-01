@@ -12,14 +12,20 @@ public class DetectObjects : MonoBehaviour
     IInteractable _currentTarget;
     IInteractable _lastInteractable;
 
-    //Action<LastInteractable,CurrentInteractable>
     public event Action<IInteractable, IInteractable> OnChangeTarget;
 
     void Update()
     {
+        if (!Managers.ShouldDisplayInteractable)
+        {
+            StopTarget();
+            OnChangeTarget?.Invoke(_lastInteractable, null);
+            return;
+        }
+
         RaycastHit hit;
-                Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _distanceRaycast, Color.yellow);
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, _distanceRaycast, _layerMask))
+        Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _distanceRaycast, Color.yellow);
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, _distanceRaycast))
         {
             GameObject hitGameobject = hit.transform.gameObject;
             IInteractable currentInteractable = hitGameobject.GetComponent<IInteractable>();
@@ -71,66 +77,4 @@ public class DetectObjects : MonoBehaviour
             _currentTarget = null;
         }
     }
-
-    //void Update()
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out hit, _distanceRaycast, _layerMask))
-    //    {
-    //        GameObject go = hit.transform.gameObject;
-    //        CleanPuddle bloodPuddle = go.GetComponent<CleanPuddle>();
-    //        if (bloodPuddle != null)
-    //        {
-    //            _uiTextClean.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            _uiTextClean.SetActive(false);
-    //        }
-    //        if (Input.GetKey(KeyCode.Space))
-    //        {
-    //            if (bloodPuddle != null)
-    //            {
-    //                if (_currentTarget != bloodPuddle)
-    //                {
-    //                    if (_currentTarget != null)
-    //                    {
-    //                        _currentTarget.StopCleaning();
-    //                    }
-
-    //                    _currentTarget = bloodPuddle;
-    //                    _currentTarget.StartCleaning();
-    //                }
-    //                Debug.DrawRay(_camera.transform.position, _camera.transform.forward * hit.distance, Color.yellow);
-    //            }
-    //            else
-    //            {
-    //                StopTarget();
-    //                Debug.DrawRay(_camera.transform.position, _camera.transform.forward * hit.distance, Color.red);
-    //            }
-    //        }
-    //        else if (_currentTarget != null)
-    //        {
-    //            StopTarget();
-    //        }
-    //    }
-    //    else if (_uiTextClean.activeSelf)
-    //    {
-    //        _uiTextClean.SetActive(false);
-    //    }
-
-    //    if (Input.GetKeyUp(KeyCode.Space))
-    //    {
-    //        StopTarget();
-    //    }
-    //}
-
-    //void StopTarget()
-    //{
-    //    if (_currentTarget != null)
-    //    {
-    //        _currentTarget.StopCleaning();
-    //        _currentTarget = null;
-    //    }
-    //}
 }
