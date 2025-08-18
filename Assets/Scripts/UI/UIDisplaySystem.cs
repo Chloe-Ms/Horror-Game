@@ -12,7 +12,7 @@ public class UIDisplaySystem : MonoBehaviour
 
     private void Awake()
     {
-        _detectObjects = FindObjectOfType<DetectObjects>();
+        _detectObjects = FindFirstObjectByType<DetectObjects>();
         if (_detectObjects != null)
         {
             _detectObjects.OnChangeTarget += OnChangeTarget;
